@@ -11,7 +11,7 @@ namespace Certificates
 {
 
 
-    public partial class Grievance
+    public partial class LogOut
     {
     }
 }
