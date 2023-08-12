@@ -144,15 +144,17 @@
     <Content Include="assets\images\cal.png" />
     <Content Include="assets\images\cal1.png" />
     <Content Include="assets\images\cal2.jpg" />
-    <Content Include="Certificates\PhysicalEducationSection.aspx" />
-    <Content Include="Certificates\LibrarySection.aspx" />
-    <Content Include="Certificates\HostelSection.aspx" />
-    <Content Include="Certificates\ViewAllApplications.aspx" />
-    <Content Include="Certificates\ExamSection.aspx" />
-    <Content Include="Certificates\CertificateSection.aspx" />
-    <Content Include="Certificates\AdminSection.aspx" />
-    <Content Include="Certificates\ViewCertificates.aspx" />
-    <Content Include="Certificates\ApplyCertificates.aspx" />
+    <Content Include="Certificates\Admin\PhysicalEducationSection.aspx" />
+    <Content Include="Certificates\Admin\LibrarySection.aspx" />
+    <Content Include="Certificates\Admin\HostelSection.aspx" />
+    <Content Include="Certificates\Admin\ViewAllApplications.aspx" />
+    <Content Include="Certificates\Admin\ExamSection.aspx" />
+    <Content Include="Certificates\Admin\CertificateSection.aspx" />
+    <Content Include="Certificates\Admin\AdminSection.aspx" />
+    <Content Include="Certificates\Candidate\ViewCertificates.aspx" />
+    <Content Include="Certificates\Candidate\ApplyCertificates.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="LogOut.aspx" />
     <Content Include="Photos\1.jpg" />
     <Content Include="Photos\2.jpg" />
     <Content Include="Photos\3.jpg" />
@@ -162,6 +164,8 @@
     <Content Include="Photos\7.jpg" />
     <Content Include="Photos\8.jpg" />
     <Content Include="Photos\9.jpg" />
+    <Content Include="Login.aspx" />
+    <Content Include="Registration\Registration.aspx" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
@@ -174,7 +178,7 @@
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
     <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
     <Content Include="UserControls\ModuleLeftMenu.ascx" />
-    <Content Include="Certificates\Grievance.aspx" />
+    <Content Include="Grievance.aspx" />
     <Content Include="assets\css\animate.css\css\animate.css" />
     <Content Include="assets\css\bootstrap\css\bootstrap.min.css" />
     <Content Include="assets\css\chartist\chartist.css" />
@@ -411,6 +415,8 @@
     <Content Include="ModuleSite.Master" />
     <Content Include="Certificates\Certificates.Master" />
     <Content Include="Certificates\Fonts\Monotype Corsiva.ttf" />
+    <Content Include="ModuleSiteOut.Master" />
+    <Content Include="Registration\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -434,53 +440,53 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Certificates\PhysicalEducationSection.aspx.cs">
+    <Compile Include="Certificates\Admin\PhysicalEducationSection.aspx.cs">
       <DependentUpon>PhysicalEducationSection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\PhysicalEducationSection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\PhysicalEducationSection.aspx.designer.cs">
       <DependentUpon>PhysicalEducationSection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\LibrarySection.aspx.cs">
+    <Compile Include="Certificates\Admin\LibrarySection.aspx.cs">
       <DependentUpon>LibrarySection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\LibrarySection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\LibrarySection.aspx.designer.cs">
       <DependentUpon>LibrarySection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\HostelSection.aspx.cs">
+    <Compile Include="Certificates\Admin\HostelSection.aspx.cs">
       <DependentUpon>HostelSection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\HostelSection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\HostelSection.aspx.designer.cs">
       <DependentUpon>HostelSection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\ViewAllApplications.aspx.cs">
+    <Compile Include="Certificates\Admin\ViewAllApplications.aspx.cs">
       <DependentUpon>ViewAllApplications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\ViewAllApplications.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\ViewAllApplications.aspx.designer.cs">
       <DependentUpon>ViewAllApplications.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\ExamSection.aspx.cs">
+    <Compile Include="Certificates\Admin\ExamSection.aspx.cs">
       <DependentUpon>ExamSection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\ExamSection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\ExamSection.aspx.designer.cs">
       <DependentUpon>ExamSection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\CertificateSection.aspx.cs">
+    <Compile Include="Certificates\Admin\CertificateSection.aspx.cs">
       <DependentUpon>CertificateSection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\CertificateSection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\CertificateSection.aspx.designer.cs">
       <DependentUpon>CertificateSection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\AdminSection.aspx.cs">
+    <Compile Include="Certificates\Admin\AdminSection.aspx.cs">
       <DependentUpon>AdminSection.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\AdminSection.aspx.designer.cs">
+    <Compile Include="Certificates\Admin\AdminSection.aspx.designer.cs">
       <DependentUpon>AdminSection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Certificates\Certificates.Master.cs">
@@ -490,19 +496,40 @@
     <Compile Include="Certificates\Certificates.Master.designer.cs">
       <DependentUpon>Certificates.Master</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\ViewCertificates.aspx.cs">
+    <Compile Include="Certificates\Candidate\ViewCertificates.aspx.cs">
       <DependentUpon>ViewCertificates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\ViewCertificates.aspx.designer.cs">
+    <Compile Include="Certificates\Candidate\ViewCertificates.aspx.designer.cs">
       <DependentUpon>ViewCertificates.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\ApplyCertificates.aspx.cs">
+    <Compile Include="Certificates\Candidate\ApplyCertificates.aspx.cs">
       <DependentUpon>ApplyCertificates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\ApplyCertificates.aspx.designer.cs">
+    <Compile Include="Certificates\Candidate\ApplyCertificates.aspx.designer.cs">
       <DependentUpon>ApplyCertificates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSiteOut.Master.cs">
+      <DependentUpon>ModuleSiteOut.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuleSiteOut.Master.designer.cs">
+      <DependentUpon>ModuleSiteOut.Master</DependentUpon>
     </Compile>
     <Compile Include="ModuleSite.Master.cs">
       <DependentUpon>ModuleSite.Master</DependentUpon>
@@ -511,6 +538,20 @@
     <Compile Include="ModuleSite.Master.designer.cs">
       <DependentUpon>ModuleSite.Master</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registration\Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registration\Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ModuleLeftMenu.ascx.cs">
       <DependentUpon>ModuleLeftMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,11 +559,11 @@
     <Compile Include="UserControls\ModuleLeftMenu.ascx.designer.cs">
       <DependentUpon>ModuleLeftMenu.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Certificates\Grievance.aspx.cs">
+    <Compile Include="Grievance.aspx.cs">
       <DependentUpon>Grievance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Certificates\Grievance.aspx.designer.cs">
+    <Compile Include="Grievance.aspx.designer.cs">
       <DependentUpon>Grievance.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />

@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1684
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Certificates", "Certificates.csproj", "{94B858C5-21A3-4108-B0AE-4BD4E959EE80}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "..\Inventory\Inventory\Inventory.csproj", "{035C411E-FF6D-42DE-9DFC-D01C0E8F967D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{94B858C5-21A3-4108-B0AE-4BD4E959EE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94B858C5-21A3-4108-B0AE-4BD4E959EE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94B858C5-21A3-4108-B0AE-4BD4E959EE80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{035C411E-FF6D-42DE-9DFC-D01C0E8F967D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{035C411E-FF6D-42DE-9DFC-D01C0E8F967D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{035C411E-FF6D-42DE-9DFC-D01C0E8F967D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{035C411E-FF6D-42DE-9DFC-D01C0E8F967D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

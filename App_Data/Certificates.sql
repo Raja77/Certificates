@@ -66,6 +66,19 @@ CREATE TABLE [dbo].[tbStudentDetails](
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [dbo].[tbUsers]
+(
+	[Id] INT NOT NULL IDENTITY PRIMARY KEY,
+	[Name] nvarchar(100) NOT NULL, 
+    [Email] NVARCHAR(100) NOT NULL, 
+    [Password] NVARCHAR(100) NOT NULL, 
+    [PhoneNo] BIGINT NULL, 
+    [UserType] NVARCHAR(100) NULL, 
+    [RollNo] NVARCHAR(10) NULL, 
+    [DepartmentType] NVARCHAR(100) NULL
+)
+
+
 
 CREATE PROCEDURE [dbo].[spApplications]  
 (  
@@ -398,5 +411,47 @@ BEGIN
 		 from tbStudentApplication sa inner  join tbStudentDetails td on sa.RollNo = td.classrollno where Id= @Id 
     END	 
 END 
+
+
+CREATE PROCEDURE [dbo].[spUsers]  
+(  
+    @Id INT = NULL, 
+    @Name NVARCHAR(100) = NULL,  
+	@Email NVARCHAR(100)=NULL,
+    @Password NVARCHAR(100)=NULL, 
+    @PhoneNo bigint = NULL,
+	@UserType NVARCHAR(100) = NULL,
+	@RollNo NVARCHAR(10)   = NULL,
+	@DepartmentType NVARCHAR(100)  = NULL,
+	@ActionType VARCHAR(25)
+)  
+AS  
+BEGIN  
+    IF @ActionType = 'SaveUsers'  
+    BEGIN  
+        IF NOT EXISTS (SELECT * FROM tbUsers WHERE Id=@Id)  
+        BEGIN  
+            INSERT INTO tbUsers ([Name],Email,[Password],PhoneNo,UserType, RollNo, DepartmentType)  
+            VALUES (@Name, @Email, @Password, @PhoneNo, @UserType, @RollNo, @DepartmentType)  
+        END  
+        ELSE  
+        BEGIN  
+            UPDATE tbUsers SET [Name]=@Name,Email=@Email,[Password]=@Password,  
+            PhoneNo=@PhoneNo, UserType=@UserType,RollNo=@RollNo,DepartmentType=@DepartmentType WHERE Id=@Id  
+        END  
+    END 
+
+	    IF @ActionType = 'FetchLoginUser'  
+    BEGIN  
+        Select * from tbUsers where Email=@Email and [Password]=@Password
+    END 
+	
+    IF @ActionType = 'DeleteUsers'  
+    BEGIN  
+        DELETE tbUsers WHERE Id=@Id  
+    END  
+ 
+END
+
 
 GO

@@ -11,7 +11,7 @@ namespace Certificates
 {
 
 
-    public partial class ModuleSite
+    public partial class ModuleSiteOut
     {
 
         /// <summary>
@@ -22,33 +22,6 @@ namespace Certificates
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
-
-        /// <summary>
-        /// lnkLogout control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkLogout;
-
-        /// <summary>
-        /// ModuleLeftMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Certificates.ModuleLeftMenu ModuleLeftMenu;
-
-        /// <summary>
-        /// FeaturedContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
 
         /// <summary>
         /// MainContent control.
