@@ -437,8 +437,11 @@ BEGIN
             INSERT INTO tbUsers ([Name],[Email],[Password],PhoneNo,UserType, RollNo, DepartmentType)  
             VALUES (@Name, @Email, @Password, @PhoneNo, @UserType, @RollNo, @DepartmentType) 
 
-			INSERT INTO tbStudentDetails ([Name],[Email],classrollno)  
-            VALUES (@Name, @Email, @RollNo) 			
+		if (@DepartmentType is NULL)
+			BEGIN			
+				INSERT INTO tbStudentDetails ([Name],Email,classrollno)  
+				VALUES (@Name, @Email, @RollNo) 
+			END			
         END  
         ELSE  
         BEGIN  
