@@ -1,3 +1,8 @@
+DROP DATABASE [IC]
+GO
+CREATE DATABASE [IC]
+GO
+
 USE [IC]
 GO
 
@@ -53,21 +58,21 @@ CREATE TABLE [dbo].[tbStudentApplication](
 GO
 
 
-CREATE TABLE [dbo].[tbStudentDetails](
-	[CourseApplied] [nvarchar](255) NULL,
-	[classrollno] [int] NOT NULL,
-	[name] [nvarchar](255) NULL,
-	[parentage] [nvarchar](255) NULL,
-	[address] [nvarchar](255) NULL,
-	[email] [nvarchar](255) NULL,
-	[dob] [datetime] NULL,
-	[obtmarks] [float] NULL,
-	[twelvemarks] [nvarchar](255) NULL
-) ON [PRIMARY]
+CREATE TABLE [dbo].[tbStudentDetails] (
+    [CourseApplied] NVARCHAR (255) NULL,
+    [classrollno]   INT           NOT NULL,
+    [name]          NVARCHAR (255) NULL,
+    [parentage]     NVARCHAR (255) NULL,
+    [address]       NVARCHAR (255) NULL,
+    [email]         NVARCHAR (255) NULL,
+    [dob]           DATETIME       NULL,
+    [obtmarks]      FLOAT (53)     NULL,
+    [twelvemarks]   NVARCHAR (255) NULL, 
+    CONSTRAINT [PK_tbStudentDetails] PRIMARY KEY ([classrollno])
+);
 GO
 
-CREATE TABLE [dbo].[tbUsers]
-(
+CREATE TABLE [dbo].[tbUsers] (
 	[Id] INT NOT NULL IDENTITY PRIMARY KEY,
 	[Name] nvarchar(100) NOT NULL, 
     [Email] NVARCHAR(100) NOT NULL, 
@@ -77,11 +82,9 @@ CREATE TABLE [dbo].[tbUsers]
     [RollNo] NVARCHAR(10) NULL, 
     [DepartmentType] NVARCHAR(100) NULL
 )
+GO
 
-
-
-CREATE PROCEDURE [dbo].[spApplications]  
-(  
+CREATE PROCEDURE [dbo].[spApplications]  (  
     @Id INT = NULL,  
     @AdminSectionVerifierEntries VARCHAR(max) = NULL,  
 	@IsAdminSectionVerified Bit = NULL,
@@ -411,7 +414,7 @@ BEGIN
 		 from tbStudentApplication sa inner  join tbStudentDetails td on sa.RollNo = td.classrollno where Id= @Id 
     END	 
 END 
-
+GO
 
 CREATE PROCEDURE [dbo].[spUsers]  
 (  
@@ -431,8 +434,11 @@ BEGIN
     BEGIN  
         IF NOT EXISTS (SELECT * FROM tbUsers WHERE Id=@Id)  
         BEGIN  
-            INSERT INTO tbUsers ([Name],Email,[Password],PhoneNo,UserType, RollNo, DepartmentType)  
-            VALUES (@Name, @Email, @Password, @PhoneNo, @UserType, @RollNo, @DepartmentType)  
+            INSERT INTO tbUsers ([Name],[Email],[Password],PhoneNo,UserType, RollNo, DepartmentType)  
+            VALUES (@Name, @Email, @Password, @PhoneNo, @UserType, @RollNo, @DepartmentType) 
+
+			INSERT INTO tbStudentDetails ([Name],[Email],classrollno)  
+            VALUES (@Name, @Email, @RollNo) 			
         END  
         ELSE  
         BEGIN  
@@ -452,6 +458,4 @@ BEGIN
     END  
  
 END
-
-
 GO
