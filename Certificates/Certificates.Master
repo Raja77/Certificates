@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Counselling cell</title>
+    <title>Certificate Portal</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
@@ -344,7 +344,7 @@
                                   <div class="col-md-8">
                                       <div class="page-header-title">
                                           <h5 class="m-b-10">Dashboard</h5>
-                                          <p class="m-b-0">Welcome to Counselling Portal</p>
+                                          <p class="m-b-0">Welcome to Certificates Portal</p>
                                       </div>
                                   </div>
                                   <div class="col-md-4">
