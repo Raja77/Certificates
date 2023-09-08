@@ -444,7 +444,7 @@ namespace Certificates
                 if (drpStatus.SelectedItem.Value == "True" && (certificateType == "Bonafide/Studentship Certificate" ||
                     certificateType == "Discharge/Transfer Certificate" || certificateType == "Migration Certificate"))
                 {
-                    if (isLibraryVerified == "True" && isPhysicalEduVerified == "True" && isHostelVerified == "True")
+                    if (isLibraryVerified == "True" && isPhysicalEduVerified == "True" && isAdminVerified == "True")
                     {
                         isCertificateVerified = true;
                     }
@@ -453,9 +453,9 @@ namespace Certificates
                         isCertificateVerified = false;
                     }
                 }
-                else if (certificateType == "Provisional cum Character Certificate")
+                else if (drpStatus.SelectedItem.Value == "True" && certificateType == "Provisional cum Character Certificate")
                 {
-                    if (isExamVerified == "True" && isLibraryVerified == "True" && isPhysicalEduVerified == "True" && isHostelVerified == "True")
+                    if (isExamVerified == "True" && isLibraryVerified == "True" && isPhysicalEduVerified == "True" && isAdminVerified == "True")
                     {
                         isCertificateVerified = true;
                     }
@@ -463,6 +463,10 @@ namespace Certificates
                     {
                         isCertificateVerified = false;
                     }
+                }
+                else
+                {
+                    isCertificateVerified = false;
                 }
                 try
                 {

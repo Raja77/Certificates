@@ -499,6 +499,7 @@ namespace Certificates
                         document.Add(paragraph);
                         #endregion
                         break;
+
                     case "Discharge/Transfer Certificate":
                         #region Discharge/Transfer Certificate
                         paragraph = new Paragraph();
@@ -602,6 +603,7 @@ namespace Certificates
                         document.Add(paragraph);
                         #endregion
                         break;
+
                     case "Bonafide/Studentship Certificate":
                         #region Bonafide/Studentship Certificate
                         Phrase b_p1 = new Phrase();
@@ -688,6 +690,10 @@ namespace Certificates
                         paragraph.Add(b_p4);
                         document.Add(paragraph);
                         #endregion
+                        break;
+
+                    case "Marks Certificate":
+                        //Marks Certificate code is pending that is the reson we are hiding print option for that
                         break;
                     default:
                         // code block
