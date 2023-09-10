@@ -141,9 +141,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Certificates.sql" />
+    <Content Include="App_Data\Updated Intial Script on Sep 11 2023.sql" />
     <Content Include="assets\images\cal.png" />
     <Content Include="assets\images\cal1.png" />
     <Content Include="assets\images\cal2.jpg" />
+    <Content Include="assets\images\IslamiaColleLogo.jpg" />
     <Content Include="Certificates\Admin\PhysicalEducationSection.aspx" />
     <Content Include="Certificates\Admin\LibrarySection.aspx" />
     <Content Include="Certificates\Admin\HostelSection.aspx" />
@@ -573,9 +576,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

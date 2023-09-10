@@ -284,11 +284,11 @@ namespace Certificates
                         Chunk a6 = new Chunk("  " + dr["RegistrationNo"] + "  ", titleFont);
                         a6.SetUnderline(f1, f2);
                         Chunk a7 = new Chunk(" was a student of this college during the session ", titleFont);
-                        Chunk a8 = new Chunk(dr["Session"] + "  ", titleFont);
+                        Chunk a8 = new Chunk(dr["Batch"] + "  ", titleFont);
                         a8.SetUnderline(f1, f2);
                         // Chunk a808 = new Chunk(".", verysmallFont);
                         Chunk a9 = new Chunk(" to ", titleFont);
-                        Chunk a10 = new Chunk(dr["Session"] + "   ", titleFont);
+                        Chunk a10 = new Chunk((Convert.ToInt32(dr["Batch"])+3)+ "   ", titleFont);
                         a10.SetUnderline(f1, f2);
                         Chunk a11 = new Chunk(" under College Roll No. ", titleFont);
                         Chunk a12 = new Chunk(dr["RollNo"] + "   .\n", titleFont);
@@ -309,26 +309,28 @@ namespace Certificates
                         //p.Add(p2);
 
                         Chunk b1 = new Chunk("    He/She appeared in ", titleFont);
-                        Chunk b2 = new Chunk(dr["Id"] + "   ", titleFont);
+                        Chunk b2 = new Chunk(DateTime.Now.Year + "   ", titleFont);
                         b2.SetUnderline(f1, f2);
                         Chunk b3 = new Chunk(" semester ", titleFont);
-                        Chunk b4 = new Chunk(dr["Id"] + "   ", titleFont);
+                        Chunk b4 = new Chunk(dr["Semester"] + "   ", titleFont);
                         b4.SetUnderline(f1, f2);
                         Chunk b5 = new Chunk(" examination held in ", titleFont);
-                        Chunk b6 = new Chunk(dr["Id"] + "   ", titleFont);
+                        Chunk b6 = new Chunk( "              ", titleFont);
                         b6.SetUnderline(f1, f2);
                         Chunk b7 = new Chunk(" under examination Roll No. ", titleFont);
-                        Chunk b8 = new Chunk(dr["Id"] + "   ", titleFont);
+                        Chunk b8 = new Chunk(dr["RollNo"] + "   ", titleFont);
                         b8.SetUnderline(f1, f2);
                         Chunk b9 = new Chunk(" and has been declared successful in the said examination, as per the result Gazette/Notification No.: ", titleFont);
                         //Chunk b10 = new Chunk(dr["Id"] + "   ", titleFont);  //????????Sucessful/unsuccessful/re-appear
                         //b10.SetUnderline(f1, f2);
                         //Chunk b11 = new Chunk(" \n", titleFont);
                         //Chunk b12 = new Chunk(" ", titleFont);
-                        Chunk b13 = new Chunk(dr["GazetteNotificationNo"] + "   ", titleFont);
+                        Chunk b13 = new Chunk( "              ", titleFont);
+                        //Chunk b13 = new Chunk(dr["GazetteNotificationNo"] + "   ", titleFont);
                         b13.SetUnderline(f1, f2);
                         Chunk b14 = new Chunk(" dated ", titleFont);
-                        Chunk b15 = new Chunk(dr["GazetteNotificationDate"] + "   ", titleFont);
+                        Chunk b15 = new Chunk( "              ", titleFont);
+                        //Chunk b15 = new Chunk(dr["GazetteNotificationDate"] + "   ", titleFont);
                         b15.SetUnderline(f1, f2);
                         Chunk b16 = new Chunk(" published by the ", titleFont);
                         Chunk b17 = new Chunk("controller of examination of College/University of Kashmir.", titleFont);
@@ -377,10 +379,12 @@ namespace Certificates
                         Phrase p6 = new Phrase();
                         Chunk f11 = new Chunk("\n");
                         Chunk f22 = new Chunk("Marks/CGPA obtained ", titleFont);
-                        Chunk f33 = new Chunk("  " + dr["CGPA"] + "  ", titleFont);
+                        Chunk f33 = new Chunk("                   ", titleFont);
+                        //Chunk f33 = new Chunk("  " + dr["CGPA"] + "  ", titleFont);
                         f33.SetUnderline(f1, f2);
                         Chunk f44 = new Chunk(" Division/Grade ", titleFont);
-                        Chunk f55 = new Chunk("  " + dr["Grade"] + "  ", titleFont);
+                        Chunk f55 = new Chunk("                   ", titleFont);
+                        //Chunk f55 = new Chunk("  " + dr["Grade"] + "  ", titleFont);
                         f55.SetUnderline(f1, f2);
                         Chunk f66 = new Chunk(" Dated ", titleFont);
                         Chunk f77 = new Chunk("  " + DateTime.Now.ToString("dd-MMM-yyyy") + "  ", titleFont);
@@ -456,17 +460,17 @@ namespace Certificates
                         //Chunk m_a13 = new Chunk("Botany/M.Sc. zoology two/three years degree course during academic", NormalFont);
                         //Chunk m_a14 = new Chunk("session ", NormalFont);
                         Chunk m_a14 = new Chunk("completed his/her " + dr["CourseApplied"] + " two/three years degree course during academic session ", NormalFont);
-                        Chunk m_a15 = new Chunk("    " + dr["Session-Year"] + "   .", NormalFont);
+                        Chunk m_a15 = new Chunk("    " + dr["Batch"] + " - "+(Convert.ToInt32(dr["Batch"]) + 3) + "   .", NormalFont);
                         m_a15.SetUnderline(f1, f2);
                         //Chunk m_a16 = new Chunk(" This College has no objection to his/her ", NormalFont);
                         //Chunk m_a17 = new Chunk("continuing studies or appearing in any examination at any recognized ", NormalFont);
                         //Chunk m_a18 = new Chunk("University/College/Institution established by law in India. He/She has ", NormalFont);
                         Chunk m_a19 = new Chunk(" This College has no objection to his/her continuing studies or appearing in any examination at any recognized" +
                             " University/College/Institution established by law in India. He/She has appeared in ", NormalFont);
-                        Chunk m_a20 = new Chunk("    " + dr["Semester"] + "   ", NormalFont);
+                        Chunk m_a20 = new Chunk("    " + "("+ dr["Session"] + ")"+ " "+ (Convert.ToInt32(dr["Batch"])+3)+  "   ", NormalFont);
                         m_a20.SetUnderline(f1, f2);
                         Chunk m_a21 = new Chunk(" Examination held in ", NormalFont);
-                        Chunk m_a22 = new Chunk("   " + dr["ExamMonthYear"] + "   ", NormalFont);
+                        Chunk m_a22 = new Chunk("                  ", NormalFont);
                         m_a22.SetUnderline(f1, f2);
                         Chunk m_a23 = new Chunk(" and ", NormalFont);
                         Chunk m_a24 = new Chunk("the result is ", NormalFont);
@@ -546,13 +550,13 @@ namespace Certificates
                         Chunk t_a6 = new Chunk("   " + dr["RegistrationNo"] + "   ", NormalFont);
                         t_a6.SetUnderline(f1, f2);
                         Chunk t_a7 = new Chunk(" was a student of this college from", NormalFont);
-                        Chunk t_a8 = new Chunk("   " + dr["Session"] + "   ", NormalFont);
+                        Chunk t_a8 = new Chunk("   " + dr["Batch"] + "   ", NormalFont);
                         t_a8.SetUnderline(f1, f2);
                         Chunk t_a9 = new Chunk(" to ", NormalFont);
-                        Chunk t_a10 = new Chunk("   " + dr["Session"] + "   ", NormalFont);
+                        Chunk t_a10 = new Chunk("   " + (Convert.ToInt32(dr["Batch"])+3) + "   ", NormalFont);
                         t_a10.SetUnderline(f1, f2);
                         Chunk t_a11 = new Chunk(" in the session", NormalFont);
-                        Chunk t_a12 = new Chunk("   " + dr["Session-Year"] + "   ", NormalFont);
+                        Chunk t_a12 = new Chunk("   " + dr["Session"] + "   ", NormalFont);
                         t_a12.SetUnderline(f1, f2);
                         Chunk t_a13 = new Chunk(" under college Roll No ", NormalFont);
                         Chunk t_a14 = new Chunk("   " + dr["RollNo"] + "   ", NormalFont);
@@ -567,13 +571,15 @@ namespace Certificates
                             "dues and returned the library books borrowed by him/her.", NormalFont);
                         Chunk t_a20 = new Chunk("\nMatriculation Certificate be referred for Date of Birth.", NormalFont);
                         Chunk t_a21 = new Chunk("\n   He/She has been permitted to migrate from this college to the ", NormalFont);
-                        Chunk t_a22 = new Chunk("   " + dr["RegistrationNo"] + "   ", NormalFont);
+                        Chunk t_a22 = new Chunk("                      ", NormalFont);
+                        //Chunk t_a22 = new Chunk("   " + dr["RegistrationNo"] + "   ", NormalFont);
                         t_a22.SetUnderline(f1, f2);
                         Chunk t_a23 = new Chunk(" as per Kashmir University letter No. ", NormalFont);
-                        Chunk t_a24 = new Chunk("   " + dr["RegistrationNo"] + "   ", NormalFont);
+                        Chunk t_a24 = new Chunk("                      ", NormalFont);
+                        //Chunk t_a24 = new Chunk("   " + dr["RegistrationNo"] + "   ", NormalFont);
                         t_a24.SetUnderline(f1, f2);
                         Chunk t_a25 = new Chunk(" Dated ", NormalFont);
-                        Chunk t_a26 = new Chunk("   " + DateTime.Now.ToString("dd-MMM-yyyy") + "   ", NormalFont);
+                        Chunk t_a26 = new Chunk("                      ", NormalFont);
                         t_a26.SetUnderline(f1, f2);
                         Chunk t_a27 = new Chunk("\n\nConduct / Character ", NormalBoldFont);
                         Chunk t_a28 = new Chunk(" Satisfactory ", NormalFont);
@@ -629,7 +635,7 @@ namespace Certificates
                         Chunk b_a5 = new Chunk(dr["Parentage"] + "   ", NormalFont);
                         b_a5.SetUnderline(f1, f2);
                         Chunk b_a6 = new Chunk(" is/was a student of this College during the acedemic session with Class Roll No.", NormalFont);
-                        Chunk b_a7 = new Chunk("  " + dr["Session"] + "  ", NormalFont);
+                        Chunk b_a7 = new Chunk("  " + dr["RollNo"] + "  ", NormalFont);
                         b_a7.SetUnderline(f1, f2);
                         Chunk b_a8 = new Chunk(" in ", NormalFont);
                         Chunk b_a10 = new Chunk("   " + dr["CourseApplied"] + "  ", NormalFont);
@@ -641,7 +647,7 @@ namespace Certificates
                         //Chunk m_a17 = new Chunk("continuing studies or appearing in any examination at any recognized ", NormalFont);
                         //Chunk m_a18 = new Chunk("University/College/Institution established by law in India. He/She has ", NormalFont);
                         Chunk b_a16 = new Chunk(" year/semester Batch ", NormalFont);
-                             Chunk b_a17 = new Chunk("    " + dr["Session-Year"] + "   ", NormalFont);
+                             Chunk b_a17 = new Chunk("    " + dr["Batch"] + "   ", NormalFont);
                         b_a17.SetUnderline(f1, f2);
                         Chunk b_a18 = new Chunk(" under College Roll No.  ", NormalFont);
                         Chunk b_a19 = new Chunk("   " + dr["RollNo"] + "   ", NormalFont);
@@ -649,12 +655,12 @@ namespace Certificates
                         Chunk b_a20 = new Chunk(" having University Registration No. ", NormalFont);
                         Chunk b_a21 = new Chunk("    " + dr["RegistrationNo"] + "   .", NormalFont); //Awaited or RegNo.
                         b_a21.SetUnderline(f1, f2);
-                        Chunk b_a22 = new Chunk("\n   He/She has appeared / not appeared in the Annual Examination" +
+                        Chunk b_a22 = new Chunk("\n   He/She has appeared / not appeared in the Annual Examination " +
                             "of the above mentioned course / class under University / College Examination Roll No. ", NormalFont); // appeared / not appeared should be dynamic
                         Chunk b_a23 = new Chunk("   " + dr["RollNo"] + "   ", NormalFont);
                         b_a23.SetUnderline(f1, f2);
                         Chunk b_a24 = new Chunk(" Session ", NormalFont);
-                        Chunk b_a25 = new Chunk("  "+dr["Session-Year"] + "  .", NormalFont);
+                        Chunk b_a25 = new Chunk("  "+dr["Batch"]+" - "+ (Convert.ToInt32(dr["Batch"])+3) + "  .", NormalFont);
                         b_a25.SetUnderline(f1, f2);
                         Chunk b_a26 = new Chunk("\n   This certificate is issued on the request of the applicant. ", NormalFont);
 

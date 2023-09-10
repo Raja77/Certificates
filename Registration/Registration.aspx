@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="Certificates.Registration" MasterPageFile="~/ModuleSiteOut.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="Certificates.Registration" MasterPageFile="/ModuleSiteOut.Master" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -23,16 +23,17 @@
         <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Confirm Password" required="required" />
         <br />
         <asp:Label Text="PhoneNo" runat="server" AssociatedControlID="txtPhoneNo" />
-        <asp:TextBox ID="txtPhoneNo" runat="server" CssClass="form-control" placeholder="Enter Phone No." Text="" />
+        <asp:TextBox ID="txtPhoneNo" runat="server" CssClass="form-control" placeholder="Mobile No. (10-digits only)" MaxLength="10"/>
         <asp:RegularExpressionValidator ID="revPhoneNo" ControlToValidate="txtPhoneNo" CssClass="lbl" runat="server" Display="Dynamic"
             ErrorMessage="Enter valid Mobile No." ValidationExpression="^[6-9]\d{9}$"></asp:RegularExpressionValidator>
         <br />
+        <div style="display:none;">
         <asp:Label Text="UserType" runat="server" AssociatedControlID="ddlUserType" />
 
         <asp:DropDownList ID="ddlUserType" runat="server" AutoPostBack="true" CssClass="form-control"
             OnSelectedIndexChanged="ddlUserType_SelectedIndexChanged">
-            <asp:ListItem Text="Candidate" Value="CandidateX" Selected="True"></asp:ListItem>
-            <asp:ListItem Text="Department" Value="DepartmentX"></asp:ListItem>
+            <asp:ListItem Text="Candidate" Value="CandidateX"></asp:ListItem>
+            <asp:ListItem Text="Department" Value="DepartmentX" Selected="True"></asp:ListItem>
         </asp:DropDownList>
 
         <br />
@@ -42,7 +43,8 @@
 
             <br />
         </div>
-        <div id="dvDepartmentType" runat="server" visible="false">
+            </div>
+        <div id="dvDepartmentType" runat="server">
             <asp:Label Text="Department Type" runat="server" AssociatedControlID="ddlDepartmentType" />
             <asp:DropDownList ID="ddlDepartmentType" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Super Admin" Value="SAdmin" Selected="True"></asp:ListItem>

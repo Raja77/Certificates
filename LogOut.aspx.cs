@@ -1,15 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Net.NetworkInformation;
-using System.Xml.Linq;
-using System.Web.Security;
 
 namespace Certificates
 {
@@ -20,6 +9,7 @@ namespace Certificates
             Session["UserType"] = null;
             Session["DepartmentType"] = null;
             Session.Abandon();
+            Session.Clear();
             Response.Redirect("Login.aspx");
         }
     }

@@ -5,7 +5,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - Certificate Portal Cell</title>
+    <title><%: Page.Title %> - Certificate Portal</title>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -39,7 +39,16 @@
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">
-                        <a runat="server" href="~/">Islamia College</a>
+                        <a runat="server" href="Login.aspx">
+                            <img src="/assets/images/IslamiaColleLogo.jpg" alt="Islamia College" />
+                        </a>
+
+                    </p>
+                </div>
+
+                <div class="float-right">
+                    <p style="font-size: large">
+                        <a runat="server" href="Login.aspx?stu=1">Student Corner</a>
                     </p>
                 </div>
             </div>

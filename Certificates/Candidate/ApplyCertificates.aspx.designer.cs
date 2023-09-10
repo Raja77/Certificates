@@ -159,6 +159,15 @@ namespace Certificates
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvNOPref;
 
         /// <summary>
+        /// dvCheckDetailsX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCheckDetailsX;
+
+        /// <summary>
         /// grdStudentsDetail control.
         /// </summary>
         /// <remarks>
