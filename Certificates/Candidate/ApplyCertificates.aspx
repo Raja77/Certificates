@@ -38,6 +38,8 @@
                 <asp:RegularExpressionValidator ID="rfv_OTP2" ControlToValidate="txtValidateOTP" CssClass="lbl" runat="server" Display="Dynamic"
                     ErrorMessage="Enter valid OTP" ValidationExpression="^[0-9]\d{3}$"></asp:RegularExpressionValidator>
                 <asp:Label ID="lblInvalidOTP" runat="server" CssClass="lbl" Font-Size="12"></asp:Label>
+                <br />
+                <br />
                 <asp:Button ID="btnCheckDetails" runat="server" Text="Check your details" ToolTip="Click here to get your details"
                     OnClick="btnCheckDetails_Click" CssClass="btn"></asp:Button>
             </div>
@@ -45,7 +47,7 @@
     </div>
     <div id="dvNOPref" runat="server">
     </div>
-    
+    <div id="dvCheckDetailsX" runat="server" visible="false">
         <h4>Check your details</h4>
         <hr />
     <asp:GridView ID="grdStudentsDetail" CellPadding="0" CellSpacing="0" CssClass="table"
@@ -64,7 +66,13 @@
                     <asp:Label ID="lblName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "name")%>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+              <asp:BoundField DataField="Parentage" HeaderText="Parentage">
+                <HeaderStyle />
+            </asp:BoundField>
             <asp:BoundField DataField="email" HeaderText="Email">
+                <HeaderStyle />
+            </asp:BoundField>
+              <asp:BoundField DataField="DOB" HeaderText="DOB" DataFormatString="{0:dd/MM/yyyy}">
                 <HeaderStyle />
             </asp:BoundField>
             <asp:TemplateField HeaderText="Programme" ItemStyle-Width="20%">
@@ -72,8 +80,15 @@
                     <asp:Label ID="lblCourseapplied" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Courseapplied")%>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+               <asp:BoundField DataField="Batch" HeaderText="Batch">
+                <HeaderStyle />
+            </asp:BoundField>
+              <asp:BoundField DataField="Session" HeaderText="Session">
+                <HeaderStyle />
+            </asp:BoundField>
         </Columns>
     </asp:GridView>
+        </div>
     <div id="dvCertificates" runat="server" visible="false">
         <br />
         <h4>Select your Certificate</h4>

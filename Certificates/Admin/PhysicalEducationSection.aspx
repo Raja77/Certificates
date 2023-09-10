@@ -181,7 +181,7 @@
                                                     <asp:LinkButton ID="lnkEdit" runat="server" CommandArgument='<%#Eval("Id") + ";" + Eval("Name") + ";" + Eval("CertificateType") + ";" + 
                                 Eval("IsAdminSectionVerified") + ";" + Eval("IsExamSectionVerified") + ";" + Eval("Parentage") + ";" +   Eval("dob", "{0:dd/MMM/yyyy}")+ ";" + 
                       Eval("PhysicalEduSectionVerifiedOn", "{0:dd/MMM/yyyy}")    + ";" + Eval("PhysicalEduSectionRemarks")+ ";" + Eval("AppliedOn", "{0:dd/MMM/yyyy}")
-                      + ";" + Eval("IsLibrarySectionVerified") + ";" + Eval("IsPhysicalEduSectionVerified") + ";" + Eval("IsPhysicalEduSectionVerified")%>'
+                      + ";" + Eval("IsLibrarySectionVerified") + ";" + Eval("IsPhysicalEduSectionVerified") + ";" + Eval("IsHostelSectionVerified")%>'
                                                         CommandName="EditRecord" Text="Edit" ToolTip="Click to update the details"></asp:LinkButton>
                                                     <asp:LinkButton ID="lnkView" runat="server" CommandArgument='<%#Eval("Id")%>' CommandName="ViewRecord" Text="View" ToolTip="Click to view the details"></asp:LinkButton>
                                                 </ItemTemplate>

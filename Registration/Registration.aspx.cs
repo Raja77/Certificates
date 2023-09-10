@@ -32,7 +32,7 @@ namespace Certificates
         {
             string ddlUserTypeValue = ddlUserType.SelectedItem.Text;
 
-            if(ddlUserTypeValue == "Candidate")
+            if (ddlUserTypeValue == "Candidate")
             {
                 dvRollNo.Visible = true;
                 dvDepartmentType.Visible = false;
@@ -59,21 +59,21 @@ namespace Certificates
                 sqlCmd.CommandType = CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@ActionType", "SaveUsers");
                 //sqlCmd.Parameters.AddWithValue("@Id", ID);
-                sqlCmd.Parameters.AddWithValue("@Name", txtName.Text);                
+                sqlCmd.Parameters.AddWithValue("@Name", txtName.Text);
                 sqlCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                sqlCmd.Parameters.AddWithValue("@PhoneNo", Convert.ToInt64( txtPhoneNo.Text));
+                sqlCmd.Parameters.AddWithValue("@PhoneNo", Convert.ToInt64(txtPhoneNo.Text));
                 sqlCmd.Parameters.AddWithValue("@UserType", ddlUserType.SelectedItem.Value);
-                if (ddlUserType.SelectedItem.Value == "CandidateX")
-                {
-                    sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
-                    sqlCmd.Parameters.AddWithValue("@DepartmentType", DBNull.Value);
-                }               
-                else
-                {
-                    sqlCmd.Parameters.AddWithValue("@DepartmentType", ddlDepartmentType.SelectedItem.Value);
-                    sqlCmd.Parameters.AddWithValue("@RollNo", DBNull.Value);
-                }
+                //if (ddlUserType.SelectedItem.Value == "CandidateX")
+                //{
+                //    sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
+                //    sqlCmd.Parameters.AddWithValue("@DepartmentType", DBNull.Value);
+                //}               
+                //else
+                //{
+                sqlCmd.Parameters.AddWithValue("@DepartmentType", ddlDepartmentType.SelectedItem.Value);
+                //sqlCmd.Parameters.AddWithValue("@RollNo", DBNull.Value);
+                //}
                 int numRes = sqlCmd.ExecuteNonQuery();
                 if (numRes > 0)
                 {
@@ -100,7 +100,7 @@ namespace Certificates
         protected void ClearControls()
         {
             txtName.Text = txtEmail.Text = txtPhoneNo.Text = txtPassword.Text = txtConfirmPassword.Text = txtRollNo.Text = string.Empty;
-            ddlUserType.SelectedItem.Value = "CandidateX";
+            ddlUserType.SelectedItem.Value = "DepartmentX";
             ddlDepartmentType.SelectedItem.Value = "SAdmin";
         }
     }

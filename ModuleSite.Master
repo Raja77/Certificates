@@ -41,12 +41,14 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a runat="server" href="~/">Islamia College</a>
+                       <a runat="server" href="~/Home.aspx">
+                            <img src="/assets/images/IslamiaColleLogo.jpg" alt="Islamia College" />
+                        </a>
                 </p>
             </div>
 
                <div class="float-right">
-               <asp:LinkButton ID="lnkLogout" runat="server" PostBackUrl="~/LogOut.aspx">Log out</asp:LinkButton>
+               <asp:LinkButton ID="lnkLogout" runat="server" PostBackUrl="~/LogOut.aspx" CausesValidation="false">Log out</asp:LinkButton>
             </div>
         </div>
     </header>

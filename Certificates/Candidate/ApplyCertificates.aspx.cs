@@ -116,10 +116,11 @@ namespace Certificates
         #region Events
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-
-            //}
+            if (!string.IsNullOrEmpty(Session["RollNo"].ToString()))
+            {
+                txtRollNo.Text = Session["RollNo"].ToString();
+                txtRollNo.Enabled = false;
+            }
             lblError.Text = string.Empty;
         }
 
@@ -144,12 +145,14 @@ namespace Certificates
         {
             try
             {
+                dtData = new DataTable();
                 if (OTP.Equals(txtValidateOTP.Text.Trim()))
                 {
                     dtData = FetchStudentDetailsByRollNo();
                     if (dtData != null && dtData.Rows.Count > 0)
                     {
                         dvCertificates.Visible = true;
+                        dvCheckDetailsX.Visible= true;
                         grdStudentsDetail.DataSource = dtData;
                         grdStudentsDetail.DataBind();
 
@@ -169,6 +172,7 @@ namespace Certificates
                         grdStudentsDetail.DataSource = dtData;
                         grdStudentsDetail.DataBind();
                         dvCertificates.Visible = false;
+                        dvCheckDetailsX.Visible = false;
                     }
                 }
                 else
@@ -194,76 +198,96 @@ namespace Certificates
         {
             try
             {
-                lblError1.Visible = false;
-                if (conn.State == ConnectionState.Closed)
+                int batchSession = 0;
+                bool flagBatchCheck = false;
+                if (!string.IsNullOrEmpty(Session["Batch"].ToString()))
                 {
-                    conn.Open();
+                    batchSession = Convert.ToInt32(Session["Batch"]);
+                    if (!(batchSession <= DateTime.Now.Year - 3))
+                    {
+                        if (drpCertificates.SelectedItem.Value == "ProvCharCert")
+                        {
+                            lblError1.Visible = true;
+                            lblError1.Text = "Dear " + stuName + ", you are not yet eligible to apply for <strong>" + drpCertificates.SelectedItem.Text +
+                              "</strong>. As your Batch is <strong>" + batchSession + "</strong>. Thanks.";
+                            lblError1.ForeColor = System.Drawing.Color.Red;
+                            flagBatchCheck = true;
+                        }
+                    }
                 }
-                dtData = new DataTable();
-                SqlCommand sqlCmd = new SqlCommand();
-                sqlCmd = new SqlCommand("spApplications", conn);
-                sqlCmd.CommandType = CommandType.StoredProcedure;
-                sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
-                sqlCmd.Parameters.AddWithValue("@CertificateType", drpCertificates.SelectedItem.Text);
-                sqlCmd.Parameters.AddWithValue("@ActionType", "FetchSADetailsByRNnCert");
-                SqlDataAdapter sqlSda = new SqlDataAdapter(sqlCmd);
-                sqlSda.Fill(dtData);
-                if (dtData != null && dtData.Rows.Count > 0)
+                if (!flagBatchCheck)
                 {
-                    string date = dtData.Rows[0]["AppliedOn"].ToString();
-                    date = Convert.ToDateTime(date).Date.ToString("dd-MMM-yyyy");
-                    lblError1.Visible = true;
-                    lblError1.Text = "Dear " + stuName + ", you have already applied on <strong>" + date + "</strong> for <strong>" + drpCertificates.SelectedItem.Text +
-                      "</strong>. We will get back to you once it has been verified. Thanks.";
-                    lblError1.ForeColor = System.Drawing.Color.Blue;
-                }
-                else
-                {
-                    string ExamAdminTypeValue = string.Empty;
-                    if (drpCertificates.SelectedItem.Value == "ProvCharCert")
-                    {
-                        ExamAdminTypeValue = "EA";
-                    }
-
-                    else if (drpCertificates.SelectedItem.Value == "MarksCert")
-                    {
-                        ExamAdminTypeValue = "E";
-                    }
-                    else if (drpCertificates.SelectedItem.Value == "BonaStudCert" || 
-                        drpCertificates.SelectedItem.Value == "DischargeCert" || drpCertificates.SelectedItem.Value == "MigrationCert")
-                    {
-                        ExamAdminTypeValue = "A";
-                    }
-
-                    bool IsExamSectionVerified = false;
-                    bool IsAdminSectionVerified = false;
-
+                    lblError1.Visible = false;
                     if (conn.State == ConnectionState.Closed)
                     {
                         conn.Open();
                     }
                     dtData = new DataTable();
+                    SqlCommand sqlCmd = new SqlCommand();
                     sqlCmd = new SqlCommand("spApplications", conn);
                     sqlCmd.CommandType = CommandType.StoredProcedure;
-                    sqlCmd.Parameters.AddWithValue("@ActionType", "SaveStuAppDetails");
                     sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
                     sqlCmd.Parameters.AddWithValue("@CertificateType", drpCertificates.SelectedItem.Text);
-                    /*
-                     * Here we need to put Payment status 
-                     * As of now it is always true
-                     */
-                    sqlCmd.Parameters.AddWithValue("@PaymentStatus", true);
-                    sqlCmd.Parameters.AddWithValue("@AppliedOn", DateTime.Now);
-                    sqlCmd.Parameters.AddWithValue("@ExamAdminTypeValue", ExamAdminTypeValue);
-                    sqlCmd.Parameters.AddWithValue("@IsExamSectionVerified", IsExamSectionVerified);
-                    sqlCmd.Parameters.AddWithValue("@IsAdminSectionVerified", IsAdminSectionVerified);
-                    int numRes = sqlCmd.ExecuteNonQuery();
-                    if (numRes > 0)
+                    sqlCmd.Parameters.AddWithValue("@ActionType", "FetchSADetailsByRNnCert");
+                    SqlDataAdapter sqlSda = new SqlDataAdapter(sqlCmd);
+                    sqlSda.Fill(dtData);
+                    if (dtData != null && dtData.Rows.Count > 0)
                     {
-                        lblError.Text = "Dear " + stuName + ", you have applied for <strong>" + drpCertificates.SelectedItem.Text +
-                        "</strong>. We will get back to you once it has been verified. Thanks.";
-                        lblError.ForeColor = System.Drawing.Color.CornflowerBlue;
-                        lblError.Font.Size = 16;
+                        string date = dtData.Rows[0]["AppliedOn"].ToString();
+                        date = Convert.ToDateTime(date).Date.ToString("dd-MMM-yyyy");
+                        lblError1.Visible = true;
+                        lblError1.Text = "Dear " + stuName + ", you have already applied on <strong>" + date + "</strong> for <strong>" + drpCertificates.SelectedItem.Text +
+                          "</strong>. We will get back to you once it has been verified. Thanks.";
+                        lblError1.ForeColor = System.Drawing.Color.Blue;
+                    }
+                    else
+                    {
+                        string ExamAdminTypeValue = string.Empty;
+                        if (drpCertificates.SelectedItem.Value == "ProvCharCert")
+                        {
+                            ExamAdminTypeValue = "EA";
+                        }
+
+                        else if (drpCertificates.SelectedItem.Value == "MarksCert")
+                        {
+                            ExamAdminTypeValue = "E";
+                        }
+                        else if (drpCertificates.SelectedItem.Value == "BonaStudCert" ||
+                            drpCertificates.SelectedItem.Value == "DischargeCert" || drpCertificates.SelectedItem.Value == "MigrationCert")
+                        {
+                            ExamAdminTypeValue = "A";
+                        }
+
+                        bool IsExamSectionVerified = false;
+                        bool IsAdminSectionVerified = false;
+
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+                        dtData = new DataTable();
+                        sqlCmd = new SqlCommand("spApplications", conn);
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+                        sqlCmd.Parameters.AddWithValue("@ActionType", "SaveStuAppDetails");
+                        sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
+                        sqlCmd.Parameters.AddWithValue("@CertificateType", drpCertificates.SelectedItem.Text);
+                        /*
+                         * Here we need to put Payment status 
+                         * As of now it is always true
+                         */
+                        sqlCmd.Parameters.AddWithValue("@PaymentStatus", true);
+                        sqlCmd.Parameters.AddWithValue("@AppliedOn", DateTime.Now);
+                        sqlCmd.Parameters.AddWithValue("@ExamAdminTypeValue", ExamAdminTypeValue);
+                        sqlCmd.Parameters.AddWithValue("@IsExamSectionVerified", IsExamSectionVerified);
+                        sqlCmd.Parameters.AddWithValue("@IsAdminSectionVerified", IsAdminSectionVerified);
+                        int numRes = sqlCmd.ExecuteNonQuery();
+                        if (numRes > 0)
+                        {
+                            lblError.Text = "Dear " + stuName + ", you have applied for <strong>" + drpCertificates.SelectedItem.Text +
+                            "</strong>. We will get back to you once it has been verified. Thanks.";
+                            lblError.ForeColor = System.Drawing.Color.CornflowerBlue;
+                            lblError.Font.Size = 16;
+                        }
                     }
                 }
             }
