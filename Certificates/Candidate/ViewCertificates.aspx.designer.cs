@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Certificates {
-    
-    
-    public partial class ViewCertificates {
-        
+namespace Certificates
+{
+
+
+    public partial class ViewCertificates
+    {
+
         /// <summary>
         /// lblError control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
-        
+
         /// <summary>
         /// dvNOPref control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvNOPref;
-        
+
         /// <summary>
         /// dvAcdGrid control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvAcdGrid;
-        
+
         /// <summary>
         /// Accordion1 control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.Accordion Accordion1;
-        
+
         /// <summary>
         /// AccordionPane1 control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane AccordionPane1;
-        
+
         /// <summary>
         /// countAppliedApplication control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl countAppliedApplication;
-        
+
         /// <summary>
         /// grdCertificatesDetail control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCertificatesDetail;
-        
+
         /// <summary>
         /// AccordionPane2 control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.AccordionPane AccordionPane2;
-        
+
         /// <summary>
         /// countRejectedApplications control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl countRejectedApplications;
-        
+
         /// <summary>
         /// grdRejectedApplications control.
         /// </summary>
@@ -101,5 +103,32 @@ namespace Certificates {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdRejectedApplications;
+
+        /// <summary>
+        /// AccordionPane3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.AccordionPane AccordionPane3;
+
+        /// <summary>
+        /// countPrintApplications control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl countPrintApplications;
+
+        /// <summary>
+        /// grdPrintCertificatesDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdPrintCertificatesDetail;
     }
 }

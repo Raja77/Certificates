@@ -56,15 +56,6 @@
                                                     <asp:Button ID="btnGrievance" runat="server" Text="Grievance" OnClick="btnGrievance_Click" Enabled="false" ToolTip="Click here to register your grievance" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <%--        <asp:BoundField DataField="IsCertificateVerified">
-                <HeaderStyle />
-                   <ItemStyle CssClass="hide" />
-            </asp:BoundField>
-              <asp:BoundField DataField="IsCertificateReady">
-                <HeaderStyle />
-                  <ItemStyle CssClass="hide" />
-            </asp:BoundField>  --%>
                                         </Columns>
                                     </asp:GridView>
                                 </td>
@@ -98,31 +89,64 @@
                                             <asp:BoundField DataField="AppliedOn" HeaderText="Applied On" DataFormatString="{0:dd-MMM-yyyy}">
                                                 <HeaderStyle />
                                             </asp:BoundField>
-                                                 <asp:BoundField DataField="AdminSectionRemarks" HeaderText="Admin Remarks">
+                                            <asp:BoundField DataField="AdminSectionRemarks" HeaderText="Admin Remarks">
                                                 <HeaderStyle />
                                             </asp:BoundField>
-                                                 <asp:BoundField DataField="ExamSectionRemarks" HeaderText="Exam Remarks">
+                                            <asp:BoundField DataField="ExamSectionRemarks" HeaderText="Exam Remarks">
                                                 <HeaderStyle />
                                             </asp:BoundField>
                                             <asp:TemplateField HeaderText="Remarks" HeaderStyle-CssClass="headerWidth" Visible="false">
                                                 <ItemTemplate>
-                                                       <asp:Label ID="lblPayment" runat="server" Text='<%# Boolean.Parse(Eval("PaymentStatus").ToString()) ? "Yes" : "No" %>'></asp:Label>
+                                                    <asp:Label ID="lblPayment" runat="server" Text='<%# Boolean.Parse(Eval("PaymentStatus").ToString()) ? "Yes" : "No" %>'></asp:Label>
                                                     <asp:Label ID="lblIsCertificateVerified" runat="server" Text='<%#Eval("IsCertificateVerified")%>' Visible="false"></asp:Label>
-                                                    <asp:Label ID="lblcertificateType" runat="server" Text='<%#Eval("CertificateTyPE")%>' Visible="false"></asp:Label>
+                                                    <asp:Label ID="lblcertificateType" runat="server" Text='<%#Eval("CertificateType")%>' Visible="false"></asp:Label>
                                                     <asp:Label ID="lblAdminSectionRemarks" runat="server" Text='<%#Eval("AdminSectionRemarks")%>' Visible="false"></asp:Label>
                                                     <asp:Label ID="lblExamSectionRemarks" runat="server" Text='<%#Eval("ExamSectionRemarks")%>' Visible="false"></asp:Label>
-                                     
-                                                       </ItemTemplate>
+                                                </ItemTemplate>
                                             </asp:TemplateField>
-
-                                            <%--        <asp:BoundField DataField="IsCertificateVerified">
-                <HeaderStyle />
-                   <ItemStyle CssClass="hide" />
-            </asp:BoundField>
-              <asp:BoundField DataField="IsCertificateReady">
-                <HeaderStyle />
-                  <ItemStyle CssClass="hide" />
-            </asp:BoundField>  --%>
+                                        </Columns>
+                                    </asp:GridView>
+                                </td>
+                            </tr>
+                        </table>
+                    </Content>
+                </ajaxToolkit:AccordionPane>                  
+                  <ajaxToolkit:AccordionPane ID="AccordionPane3" runat="server">
+                    <Header>Print/Ready Applications <strong>(<span id="countPrintApplications" runat="server">0</span>)</strong></Header>
+                    <Content>
+                        <strong><u>Details of Print/Ready Applications</u></strong>
+                        <table class="tblcss">
+                            <tr>
+                                <td>
+                                    <asp:GridView ID="grdPrintCertificatesDetail" CellPadding="0" CellSpacing="0" CssClass="table table-bordered table-striped"
+                                        DataKeyNames="Id" GridLines="None" runat="server" AutoGenerateColumns="false">
+                                        <HeaderStyle />
+                                        <EmptyDataTemplate>
+                                            <label class="lbl">No Certificate found in our system !</label>
+                                        </EmptyDataTemplate>
+                                        <AlternatingRowStyle CssClass="alt" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="S No." HeaderStyle-Width="10%" HeaderStyle-HorizontalAlign="Left">
+                                                <ItemTemplate>
+                                                    <%# Container.DataItemIndex + 1 + "." %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="CertificateType" HeaderText="Certificate">
+                                                <HeaderStyle />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="CourseApplied" HeaderText="Course">
+                                                <HeaderStyle />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="AppliedOn" HeaderText="Applied On" DataFormatString="{0:dd-MMM-yyyy}">
+                                                <HeaderStyle />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Actions" HeaderStyle-CssClass="headerWidth">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="lnkPrint" runat="server" CommandArgument='<%#Eval("Id")+ ";" + Eval("CertificateType")+ ";" + Eval("IsCertificatePrinted")+ ";" 
+                                                            + Eval("CertificateSectionPrintedDate")+ ";" + Eval("CertificateNo")+ ";" + Eval("CertificateSectionIssuedNumber")%>'
+                                                        OnClick="lnkPrint_Click" CommandName="PrintCertificate" Text="Print" ToolTip="Click to Print the Certificate"></asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                     </asp:GridView>
                                 </td>
@@ -130,14 +154,7 @@
                         </table>
                     </Content>
                 </ajaxToolkit:AccordionPane>
-
             </Panes>
         </ajaxToolkit:Accordion>
     </div>
-
-
-
-
-
-
 </asp:Content>

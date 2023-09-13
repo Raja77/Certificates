@@ -12,7 +12,30 @@ namespace Certificates
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString["Stu"] == "1")
+            {
+                personCorner.InnerText = "Employee Corner";
+                if (personCorner.InnerText == "Student Corner")
+                {
+                    personCorner.HRef = "Login.aspx?stu=1";
+                }
+                else
+                {
+                    personCorner.HRef = "Login.aspx";
+                }
+            }
+            else
+            {
+                personCorner.InnerText = "Student Corner";
+                if (personCorner.InnerText == "Employee Corner")
+                {
+                    personCorner.HRef = "Login.aspx";
+                }
+                else
+                {
+                    personCorner.HRef = "Login.aspx?stu=1";
+                }
+            }
         }
     }
 }

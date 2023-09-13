@@ -48,7 +48,7 @@
 
                 <div class="float-right">
                     <p style="font-size: large">
-                        <a runat="server" href="Login.aspx?stu=1">Student Corner</a>
+                        <a runat="server" href="Login.aspx?stu=1" id="personCorner">Student Corner</a>
                     </p>
                 </div>
             </div>
