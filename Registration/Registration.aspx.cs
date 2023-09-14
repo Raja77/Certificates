@@ -77,7 +77,6 @@ namespace Certificates
                     sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text);
                     sqlCmd.Parameters.AddWithValue("@PhoneNo", Convert.ToInt64(txtPhoneNo.Text));
                     sqlCmd.Parameters.AddWithValue("@UserType", ddlUserType.SelectedItem.Value);
-                    sqlCmd.Parameters.AddWithValue("@DepartmentType", ddlDepartmentType.SelectedItem.Value);
                     int numRes = sqlCmd.ExecuteNonQuery();
                     if (numRes > 0)
                     {
