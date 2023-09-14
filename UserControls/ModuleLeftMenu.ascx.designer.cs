@@ -15,6 +15,15 @@ namespace Certificates
     {
 
         /// <summary>
+        /// ViewAllCerts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ViewAllCerts;
+
+        /// <summary>
         /// ApplyCerts control.
         /// </summary>
         /// <remarks>
@@ -85,14 +94,5 @@ namespace Certificates
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor Certificate_Dept;
-
-        /// <summary>
-        /// ViewAllCerts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ViewAllCerts;
     }
 }
