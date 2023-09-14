@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Certificates.sql" />
+    <Content Include="App_Data\Updated Intial Script on Sep 14 2023.sql" />
     <Content Include="App_Data\Updated Intial Script on Sep 13 2023.sql" />
     <Content Include="App_Data\Updated Intial Script on Sep 11 2023.sql" />
     <Content Include="assets\images\cal.png" />

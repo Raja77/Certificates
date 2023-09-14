@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.NetworkInformation;
+using System.Drawing;
 
 namespace Certificates
 {
@@ -45,6 +46,9 @@ namespace Certificates
         }
 
 
+
+
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
 
@@ -57,33 +61,34 @@ namespace Certificates
                 dtData = new DataTable();
                 sqlCmd = new SqlCommand("spUsers", conn);
                 sqlCmd.CommandType = CommandType.StoredProcedure;
-                sqlCmd.Parameters.AddWithValue("@ActionType", "SaveUsers");
-                //sqlCmd.Parameters.AddWithValue("@Id", ID);
-                sqlCmd.Parameters.AddWithValue("@Name", txtName.Text);
-                sqlCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text);
-                sqlCmd.Parameters.AddWithValue("@PhoneNo", Convert.ToInt64(txtPhoneNo.Text));
-                sqlCmd.Parameters.AddWithValue("@UserType", ddlUserType.SelectedItem.Value);
-                //if (ddlUserType.SelectedItem.Value == "CandidateX")
-                //{
-                //    sqlCmd.Parameters.AddWithValue("@RollNo", txtRollNo.Text);
-                //    sqlCmd.Parameters.AddWithValue("@DepartmentType", DBNull.Value);
-                //}               
-                //else
-                //{
+                sqlCmd.Parameters.AddWithValue("@ActionType", "CheckUserExist");
                 sqlCmd.Parameters.AddWithValue("@DepartmentType", ddlDepartmentType.SelectedItem.Value);
-                //sqlCmd.Parameters.AddWithValue("@RollNo", DBNull.Value);
-                //}
-                int numRes = sqlCmd.ExecuteNonQuery();
-                if (numRes > 0)
+                sqlCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+
+                var result = sqlCmd.ExecuteScalar();
+                if (result != null && result.ToString() == "1")
                 {
-                    lblError.Text = "Record Updated Successfully";
-                    lblError.ForeColor = System.Drawing.Color.CornflowerBlue;
-                    lblError.Font.Size = 16;
+                    lblError.Text = (string.Format("Department Type '<strong><i>{0}</i></strong>' or an Email '<strong><i>{1}</i></strong>' already exists. " +
+                        "Duplicate Department Type/Email is not allowed.", this.ddlDepartmentType.SelectedItem.Text, txtEmail.Text));
                     ClearControls();
                 }
                 else
-                    lblError.Text = ("Please Try Again !!!");
+                {                   
+                    sqlCmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    sqlCmd.Parameters.AddWithValue("@PhoneNo", Convert.ToInt64(txtPhoneNo.Text));
+                    sqlCmd.Parameters.AddWithValue("@UserType", ddlUserType.SelectedItem.Value);
+                    sqlCmd.Parameters.AddWithValue("@DepartmentType", ddlDepartmentType.SelectedItem.Value);
+                    int numRes = sqlCmd.ExecuteNonQuery();
+                    if (numRes > 0)
+                    {
+                        lblError.Text = "Data saved Successfully";
+                        lblError.ForeColor = System.Drawing.Color.CornflowerBlue;
+                        lblError.Font.Size = 16;
+                        ClearControls();
+                    }
+                    else
+                        lblError.Text = ("Please Try Again !!!");
+                }
             }
             catch (Exception ex)
             {
@@ -102,6 +107,7 @@ namespace Certificates
             txtName.Text = txtEmail.Text = txtPhoneNo.Text = txtPassword.Text = txtConfirmPassword.Text = txtRollNo.Text = string.Empty;
             ddlUserType.SelectedItem.Value = "DepartmentX";
             ddlDepartmentType.SelectedItem.Value = "SAdmin";
+            ddlDepartmentType.SelectedIndex= 0;
         }
     }
 }

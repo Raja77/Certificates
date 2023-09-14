@@ -66,21 +66,7 @@ namespace Certificates
 
                     grdRejectedApplications.DataSource = ds.Tables[1];
                     grdRejectedApplications.DataBind();
-                    for (int i = 0; i < grdRejectedApplications.Rows.Count; i++)
-                    {
-                        string adminRemarks = grdRejectedApplications.Rows[i].Cells[3].Text;
-                        string examRemarks = grdRejectedApplications.Rows[i].Cells[4].Text;
-
-                        if (adminRemarks != "&nbsp;" && !string.IsNullOrEmpty(adminRemarks))
-                        {
-                            count += 1;
-                        }
-                        else if (examRemarks != "&nbsp;" && !string.IsNullOrEmpty(examRemarks))
-                        {
-                            count += 1;
-                        }
-                        countRejectedApplications.InnerText = count.ToString();
-                    }
+                    countRejectedApplications.InnerText = ds.Tables[1].Rows.Count.ToString();
                 }
                 else
                 {
@@ -100,11 +86,6 @@ namespace Certificates
                     grdPrintCertificatesDetail.DataBind();
                     countPrintApplications.InnerText = "0";
                 }
-
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -144,17 +125,11 @@ namespace Certificates
 
                     // e.Row.FindControl("lblIsCertificateVerified") as Label).Visible = false;
                     int appliedDays = value.Days;
-                    if (certificateReady.Text == "True")
-                    {
-                        e.Row.Cells[4].Text = "Certificate ready";
-                        e.Row.Cells[4].ToolTip = "Your " + certificateType + " is ready, please collect at college";
-                        e.Row.BackColor = System.Drawing.Color.LightGreen;
-                    }
-                    else if (certificateVerified.Text == "True")
+                    if (certificateReady.Text == "True" || certificateVerified.Text == "True")
                     {
                         e.Row.Cells[4].Text = "Verified";
-                        e.Row.Cells[4].ToolTip = "Your " + certificateType + " verification has been done";
-                        e.Row.BackColor = System.Drawing.Color.Aqua;
+                        e.Row.Cells[4].ToolTip = "Your " + certificateType + " certificate verification has been done. You can Print/download it";
+                        e.Row.BackColor = System.Drawing.Color.LightGreen;
                     }
                     else if (appliedDays <= 4)
                     {
@@ -198,12 +173,7 @@ namespace Certificates
                     Label adminSectionRemarks = (e.Row.FindControl("lblAdminSectionRemarks") as Label);
                     Label examSectionRemarks = (e.Row.FindControl("lblExamSectionRemarks") as Label);
 
-                    if (adminSectionRemarks.Text == "&nbsp;" || string.IsNullOrEmpty(adminSectionRemarks.Text) && certificateType.Text != "Marks Certificate")
-                    {
-                        e.Row.Visible = false;
-
-                    }
-                    else if (examSectionRemarks.Text == "&nbsp;" || string.IsNullOrEmpty(examSectionRemarks.Text) && certificateType.Text =="Marks Certificate")
+                    if (examSectionRemarks.Text == "&nbsp;" || string.IsNullOrEmpty(examSectionRemarks.Text) && certificateType.Text =="Marks Certificate")
                     {
                         e.Row.Visible = false;
 
@@ -211,7 +181,7 @@ namespace Certificates
                     else
                     {
                         e.Row.Visible = true;
-                        e.Row.BackColor = System.Drawing.Color.Red;
+                        e.Row.BackColor = System.Drawing.Color.OrangeRed;
                     }
                 }
             }
